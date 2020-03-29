@@ -27,12 +27,49 @@ class Principal{
         $this->entrada = new Entrada();
 
     }
+
+    function getUsuario(){
+        return $this->Usuario;
+    }
+    function getCategoria(){
+        return $this->categoria;
+    }
+    function getEntrada(){
+        return $this->Entrada;
+    }
+    function setUsuario($usuario){
+        $this->usuario = $usuario;
+    }
+    function setCategoria($categoria){
+        $this->categoria = $categoria;
+    }
+    function setEntrada($entrada){
+        $this->entrada = $entrada;
+    }
+
+
 }
 //OBJETO PRINCIPAL
 $principal = new Principal();
-var_dump($principal->usuario);
+//$principal->informacion();
+//var_dump($principal->usuario);
+$methodos = get_class_methods($principal);
+
+$busqueda = array_search('setEntrada', $methodos);
+var_dump($busqueda);
 
 //OBJETO OTRO PAQUETE
-$usuario = new UsuarioAdmin();
-var_dump($usuario);
 
+$usuario = new UsuarioAdmin();
+$usuario->informacion();
+//var_dump($usuario);
+
+// Comprobar si existe una clase 
+
+$clase = @class_exists('PanelAdministrador\Usuario22');
+
+if($clase){
+    echo "<h1>La clase si existe</h1>";
+}else{
+    echo "<h1>La clase no existe</h1>";
+}
